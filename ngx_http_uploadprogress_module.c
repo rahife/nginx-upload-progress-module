@@ -618,7 +618,7 @@ ngx_http_reportuploads_handler(ngx_http_request_t * r)
     len = sizeof("Mon, 28 Sep 1970 06:00:00 GMT");
     expires->value.len = len - 1;
 
-    ccp = r->headers_out.cache_control.elts;
+    ccp = r->headers_out.cache_control->elts;
     if (ccp == NULL) {
 
         if (ngx_array_init(&r->headers_out.cache_control, r->pool,
@@ -644,7 +644,7 @@ ngx_http_reportuploads_handler(ngx_http_request_t * r)
         *ccp = cc;
 
     } else {
-        for (i = 1; i < r->headers_out.cache_control.nelts; i++) {
+        for (i = 1; i < r->headers_out.cache_control->nelts; i++) {
             ccp[i]->hash = 0;
         }
 
