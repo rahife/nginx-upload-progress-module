@@ -644,7 +644,7 @@ ngx_http_reportuploads_handler(ngx_http_request_t * r)
         *ccp = cc;
 
     } else {
-        for (i = 1; i < r->headers_out.cache_control->nelts; i++) {
+        for (i = 1; i < *r->headers_out.cache_control.nelts; i++) {
             ccp[i]->hash = 0;
         }
 
